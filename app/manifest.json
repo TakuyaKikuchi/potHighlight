@@ -1,0 +1,15 @@
+{
+  "name": "potHighlight",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "POTがもう少し見やすくなる拡張機能",
+  "icons": {
+    "16": "images/icon-16.png",
+    "128": "images/icon-128.png"
+  },
+  "content_scripts": [{
+    "matches": ["https://pot.i-studio.co.jp/*"],
+    "js": ["bower_components/jquery/dist/jquery.min.js", "scripts/main.js"],
+    "css": ["styles/main.css"]
+  }]
+}
