@@ -1,0 +1,31 @@
+.hideLongStr+.hideLongStr {
+  font-size: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.panel-body {
+  position: relative;
+}
+
+.weeklyTotalTime {
+  position: absolute;
+  right: 0;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  color: #555;
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  padding: 10px 15px;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.weeklyTotalTime .text {
+  margin-right: 10px;
+}
+
+.weeklyTotalTime span {
+  font-size: 10px;
+}
