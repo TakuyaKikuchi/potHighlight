@@ -1,6 +1,23 @@
-.hideLongStr+.hideLongStr {
+.hideLongStr {
   font-size: 12px;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.hideLongStr a {
+  color: #555 !important;
+  border-bottom: 1px dashed #555;
+  text-decoration: none !important;
+  opacity: 1;
+  transition: opacity 0.15s linear;
+}
+
+.hideLongStr a:hover {
+  opacity: 0.7;
+  transition: opacity 0.15s linear;
+}
+
+.hideLongStr a ~ .remark {
+  display: none !important;
 }
 
 .panel-body {
