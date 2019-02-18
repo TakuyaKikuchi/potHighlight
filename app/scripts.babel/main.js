@@ -2,13 +2,24 @@
 
 (function () {
   var init = function init() {
+    bindEvents();
+  };
+  var bindEvents = function bindEvents() {
     $(window).on('load', () => {
       setTimeout(() => {
         setNumber();
         totalTimeGet();
+        loadingAfter()
       }, 500);
-    })
+    });
+  }
+  //数値を変更するたびに合計時間を変更する
+  var loadingAfter = function loadingAfter() {
+    $('input[type="number"]').on('keyup mouseup', () => {
+      totalTimeGet()
+    });
   };
+  //それぞれのセルにナンバリング
   var setNumber = function setNumber() {
     var $target = $('.badge-new');
     $target.each((i, elem) => {
@@ -16,6 +27,7 @@
       addStyle(elem)
     })
   };
+  //スタイル付与
   var addStyle = function addStyle(elem) {
     var $target = $(elem);
     if (Number($target.attr('data-num')) % 2 != 0) {
@@ -38,13 +50,15 @@
       });
     }
   };
+  //合計時間取得
   var totalTimeGet = function totalTimeGet() {
     var $target = $('.task-total');
     var arr = [];
-    $target.each((i, elem) => {
+    $('.weeklyTotalTime').remove();
+    $target.each((i, cell) => {
       if (i == 1) {
-        $(elem).find('th').each((i, elem) => {
-          if (i >= 1 && i <= 5) {
+        $(cell).find('.text-right').each((i, elem) => {
+          if (i >= 1 && !$(elem).hasClass('future')) {
             arr.push(Number($(elem).text()))
           }
         })
@@ -56,6 +70,7 @@
     }
     appendSUM(sum);
   };
+  //合計時間表示
   var appendSUM = function appendSUM(sum) {
     $('.panel-body').append('<p class="weeklyTotalTime"><span class="text">合計時間:</span>' + sum + '<span>h</span>' + '</p>')
   }
