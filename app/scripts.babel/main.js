@@ -9,14 +9,19 @@
       setTimeout(() => {
         setNumber();
         totalTimeGet();
-        loadingAfter()
+        loadingAfter();
       }, 500);
     });
-  }
+  };
   //数値を変更するたびに合計時間を変更する
   var loadingAfter = function loadingAfter() {
     $('input[type="number"]').on('keyup mouseup', () => {
-      totalTimeGet()
+      totalTimeGet();
+    });
+    $('[role="presentation"]').find('a').on('click', () => {
+      setTimeout(() => {
+        setNumber();
+      }, 200);
     });
   };
   //それぞれのセルにナンバリング
@@ -61,9 +66,9 @@
           if (i >= 1 && !$(elem).hasClass('future')) {
             arr.push(Number($(elem).text()))
           }
-        })
+        });
       }
-    })
+    });
     var sum = 0;
     for (let num = 0; num < arr.length; num++) {
       sum += arr[num];
@@ -73,6 +78,6 @@
   //合計時間表示
   var appendSUM = function appendSUM(sum) {
     $('.panel-body').append('<p class="weeklyTotalTime"><span class="text">合計時間:</span>' + sum + '<span>h</span>' + '</p>')
-  }
+  };
   init();
 })();
